@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Doodlet - Online Whiteboard</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background: #fff;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem;
+    }
+    header {
+      font-size: 2rem;
+      color: #3457D5;
+      margin-bottom: 2rem;
+    }
+    button {
+      padding: 1rem 2rem;
+      font-size: 1rem;
+      background-color: orange;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin: 0.5rem;
+    }
+    input {
+      padding: 0.7rem;
+      font-size: 1rem;
+      margin-left: 0.5rem;
+    }
+    .join-section {
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <header>🎨 Welcome to Doodlet</header>
+  <p>Draw collaboratively with anyone. No install needed.</p>
+
+  <div>
+    <button onclick="createBoard('public')">🌐 Create Public Board</button>
+    <button onclick="createBoard('private')">🔒 Create Private Board</button>
+  </div>
+
+  <div class="join-section">
+    <p>Or join a board:</p>
+    <input id="joinId" placeholder="Enter board ID..." />
+    <button onclick="joinBoard()">Join</button>
+  </div>
+
+  <script>
+    function createBoard(type) {
+      const id = Math.random().toString(36).substring(2, 10);
+      window.location.href = `board.html?id=${id}&type=${type}`;
+    }
+    function joinBoard() {
+      const input = document.getElementById('joinId').value.trim();
+      if (input) {
+        window.location.href = `board.html?id=${input}`;
+      }
+    }
+  </script>
+</body>
+</html>
